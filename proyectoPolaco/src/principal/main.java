@@ -27,39 +27,34 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        _lblTitulo = new javax.swing.JLabel();
+        _btnNuevoCli = new javax.swing.JButton();
+        _btnHistorial = new javax.swing.JButton();
+        _btnInformacion = new javax.swing.JButton();
+        _btnConsCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("comercial ebenezer,                        programa polaco");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 10, 320, 30);
+        _lblTitulo.setText("comercial ebenezer,                        programa polaco");
+        getContentPane().add(_lblTitulo);
+        _lblTitulo.setBounds(40, 10, 320, 30);
 
-        jButton1.setText("Agregaer cliente nuevo");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(90, 260, 180, 25);
+        _btnNuevoCli.setText("Agregaer cliente nuevo");
+        getContentPane().add(_btnNuevoCli);
+        _btnNuevoCli.setBounds(90, 260, 180, 25);
 
-        jButton2.setText("historial");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(90, 90, 77, 25);
+        _btnHistorial.setText("historial");
+        getContentPane().add(_btnHistorial);
+        _btnHistorial.setBounds(90, 90, 77, 25);
 
-        jButton3.setText("consulta de cliente");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(90, 310, 139, 25);
+        _btnInformacion.setText("actualizar informacion");
+        getContentPane().add(_btnInformacion);
+        _btnInformacion.setBounds(90, 200, 180, 25);
 
-        jButton4.setText("actualizar informacion");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(90, 200, 180, 25);
-
-        jButton5.setText("consulta de cliente");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(90, 143, 139, 25);
+        _btnConsCliente.setText("consulta de cliente");
+        getContentPane().add(_btnConsCliente);
+        _btnConsCliente.setBounds(90, 143, 139, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,11 +95,10 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton _btnConsCliente;
+    private javax.swing.JButton _btnHistorial;
+    private javax.swing.JButton _btnInformacion;
+    private javax.swing.JButton _btnNuevoCli;
+    private javax.swing.JLabel _lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
