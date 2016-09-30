@@ -1,6 +1,6 @@
 package principal;
 
-public class JavaApplication4 {
+public class principal {
 
     public static void main(String[] args) {
 
