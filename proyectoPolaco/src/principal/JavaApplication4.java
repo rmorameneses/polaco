@@ -1,4 +1,4 @@
-package javaapplication4;
+package principal;
 
 public class JavaApplication4 {
 

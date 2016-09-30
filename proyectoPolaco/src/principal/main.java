@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication4;
+package principal;
 
 /**
  *
@@ -39,27 +39,27 @@ public class main extends javax.swing.JFrame {
 
         jLabel1.setText("comercial ebenezer,                        programa polaco");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 10, 260, 30);
+        jLabel1.setBounds(40, 10, 320, 30);
 
         jButton1.setText("Agregaer cliente nuevo");
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 260, 180, 23);
+        jButton1.setBounds(90, 260, 180, 25);
 
         jButton2.setText("historial");
         getContentPane().add(jButton2);
-        jButton2.setBounds(90, 90, 69, 23);
+        jButton2.setBounds(90, 90, 77, 25);
 
         jButton3.setText("consulta de cliente");
         getContentPane().add(jButton3);
-        jButton3.setBounds(90, 310, 121, 23);
+        jButton3.setBounds(90, 310, 139, 25);
 
         jButton4.setText("actualizar informacion");
         getContentPane().add(jButton4);
-        jButton4.setBounds(90, 200, 180, 23);
+        jButton4.setBounds(90, 200, 180, 25);
 
         jButton5.setText("consulta de cliente");
         getContentPane().add(jButton5);
-        jButton5.setBounds(90, 143, 121, 23);
+        jButton5.setBounds(90, 143, 139, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

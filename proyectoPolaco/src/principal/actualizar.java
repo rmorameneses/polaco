@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication4;
+package principal;
 
 /**
  *
@@ -38,23 +38,23 @@ public class actualizar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(170, 50, 260, 20);
+        jTextField1.setBounds(170, 50, 260, 22);
 
         jLabel1.setText("id del cliente");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 50, 90, 14);
+        jLabel1.setBounds(80, 50, 90, 16);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(340, 130, 260, 20);
+        jTextField2.setBounds(340, 130, 260, 22);
 
         jLabel2.setText("id del cliente");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(250, 130, 90, 14);
+        jLabel2.setBounds(250, 130, 90, 16);
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(340, 170, 260, 20);
+        jTextField3.setBounds(340, 170, 260, 22);
 
         jLabel3.setText("id del cliente");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(250, 170, 90, 14);
+        jLabel3.setBounds(250, 170, 90, 16);
 
         jLabel4.setText("Paso 1:");
         getContentPane().add(jLabel4);
