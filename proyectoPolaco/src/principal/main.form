@@ -27,7 +27,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="_lblTitulo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="comercial ebenezer,                        programa polaco"/>
+        <Property name="text" type="java.lang.String" value="Comercial ebenezer,                        programa polaco"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -37,7 +37,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="_btnNuevoCli">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregaer cliente nuevo"/>
+        <Property name="text" type="java.lang.String" value="Agregar cliente nuevo"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -47,17 +47,17 @@
     </Component>
     <Component class="javax.swing.JButton" name="_btnHistorial">
       <Properties>
-        <Property name="text" type="java.lang.String" value="historial"/>
+        <Property name="text" type="java.lang.String" value="Historial"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="90" y="90" width="-1" height="-1"/>
+          <AbsoluteConstraints x="90" y="90" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="_btnInformacion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="actualizar informacion"/>
+        <Property name="text" type="java.lang.String" value="Actualizar informacion"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -67,11 +67,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="_btnConsCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="consulta de cliente"/>
+        <Property name="text" type="java.lang.String" value="Consulta de cliente"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="90" y="143" width="-1" height="-1"/>
+          <AbsoluteConstraints x="90" y="143" width="150" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

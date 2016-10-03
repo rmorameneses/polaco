@@ -36,25 +36,25 @@ public class main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        _lblTitulo.setText("comercial ebenezer,                        programa polaco");
+        _lblTitulo.setText("Comercial ebenezer,                        programa polaco");
         getContentPane().add(_lblTitulo);
         _lblTitulo.setBounds(40, 10, 320, 30);
 
-        _btnNuevoCli.setText("Agregaer cliente nuevo");
+        _btnNuevoCli.setText("Agregar cliente nuevo");
         getContentPane().add(_btnNuevoCli);
         _btnNuevoCli.setBounds(90, 260, 180, 25);
 
-        _btnHistorial.setText("historial");
+        _btnHistorial.setText("Historial");
         getContentPane().add(_btnHistorial);
-        _btnHistorial.setBounds(90, 90, 77, 25);
+        _btnHistorial.setBounds(90, 90, 100, 25);
 
-        _btnInformacion.setText("actualizar informacion");
+        _btnInformacion.setText("Actualizar informacion");
         getContentPane().add(_btnInformacion);
         _btnInformacion.setBounds(90, 200, 180, 25);
 
-        _btnConsCliente.setText("consulta de cliente");
+        _btnConsCliente.setText("Consulta de cliente");
         getContentPane().add(_btnConsCliente);
-        _btnConsCliente.setBounds(90, 143, 139, 25);
+        _btnConsCliente.setBounds(90, 143, 150, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
