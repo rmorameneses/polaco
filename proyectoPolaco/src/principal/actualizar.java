@@ -29,7 +29,7 @@ public class actualizar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         _lblClienteId = new javax.swing.JLabel();
-        _txtIdCliente = new javax.swing.JTextField();
+        _txtNombreCliente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         _listClientes = new javax.swing.JList<>();
         _txtIdCliente1 = new javax.swing.JTextField();
@@ -66,7 +66,7 @@ public class actualizar extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(_txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(_txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(_radID)
@@ -88,7 +88,7 @@ public class actualizar extends javax.swing.JFrame {
                         .addComponent(_lblClienteId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(_txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(_txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_radNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,8 +149,8 @@ public class actualizar extends javax.swing.JFrame {
     private javax.swing.JList<String> _listClientes;
     private javax.swing.JRadioButton _radID;
     private javax.swing.JRadioButton _radNombre;
-    private javax.swing.JTextField _txtIdCliente;
     private javax.swing.JTextField _txtIdCliente1;
+    private javax.swing.JTextField _txtNombreCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
