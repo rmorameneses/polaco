@@ -16,6 +16,7 @@ public class buscarClientes extends javax.swing.JFrame {
      */
     public buscarClientes() {
         initComponents();
+        this.setResizable(false);
     } 
     /**
      * This method is called from within the constructor to initialize the form.

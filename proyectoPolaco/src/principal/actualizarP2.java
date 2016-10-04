@@ -16,6 +16,7 @@ public class actualizarP2 extends javax.swing.JFrame {
      */
     public actualizarP2() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**

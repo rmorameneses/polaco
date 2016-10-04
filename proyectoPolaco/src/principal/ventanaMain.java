@@ -16,6 +16,7 @@ public class ventanaMain extends javax.swing.JFrame {
      */
     public ventanaMain() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
