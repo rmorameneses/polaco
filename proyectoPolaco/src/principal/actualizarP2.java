@@ -33,23 +33,17 @@ public class actualizarP2 extends javax.swing.JFrame {
         _lblFecha = new javax.swing.JLabel();
         _lblPago = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        _txtResultado = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         _lblClienteMostrar = new javax.swing.JLabel();
         _btnPrincipal = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        _txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         _lblFecha.setText("Fecha:");
 
         _lblPago.setText("Pago:");
-
-        _txtResultado.setEditable(false);
-        _txtResultado.setColumns(20);
-        _txtResultado.setRows(5);
-        _txtResultado.setText("Resultado\n/*mostrar si no está \nal día, \no por lo menos los\n ultimos 3 pagos*/");
-        jScrollPane1.setViewportView(_txtResultado);
 
         jButton1.setText("Proceder con el pago");
 
@@ -62,6 +56,12 @@ public class actualizarP2 extends javax.swing.JFrame {
             }
         });
 
+        _txtResultado.setEditable(false);
+        _txtResultado.setColumns(20);
+        _txtResultado.setRows(5);
+        _txtResultado.setText("Resultado\n/*mostrar si no está \nal día, \no por lo menos los\n ultimos 3 pagos*/");
+        jScrollPane1.setViewportView(_txtResultado);
+
         javax.swing.GroupLayout _panelFondoLayout = new javax.swing.GroupLayout(_panelFondo);
         _panelFondo.setLayout(_panelFondoLayout);
         _panelFondoLayout.setHorizontalGroup(
@@ -69,27 +69,26 @@ public class actualizarP2 extends javax.swing.JFrame {
             .addGroup(_panelFondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelFondoLayout.createSequentialGroup()
-                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(_lblClienteMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(_panelFondoLayout.createSequentialGroup()
-                                .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(_lblPago)
-                                    .addComponent(jButton1))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelFondoLayout.createSequentialGroup()
-                        .addComponent(_lblFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(_dateSelec, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                        .addGap(115, 115, 115))
+                    .addComponent(_lblClienteMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(_panelFondoLayout.createSequentialGroup()
-                        .addComponent(_btnPrincipal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_lblPago)
+                            .addGroup(_panelFondoLayout.createSequentialGroup()
+                                .addComponent(_lblFecha)
+                                .addGap(26, 26, 26)
+                                .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField1)
+                                        .addComponent(_dateSelec, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(119, 119, 119))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelFondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(_btnPrincipal)
+                .addGap(304, 304, 304))
         );
         _panelFondoLayout.setVerticalGroup(
             _panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,32 +96,30 @@ public class actualizarP2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(_panelFondoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 80, Short.MAX_VALUE))
+                    .addGroup(_panelFondoLayout.createSequentialGroup()
                         .addComponent(_lblClienteMostrar)
                         .addGap(30, 30, 30)
-                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(_lblFecha)
-                            .addComponent(_dateSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(_lblPago)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(_dateSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(_lblFecha))
+                        .addGap(21, 21, 21)
+                        .addComponent(_lblPago)
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(_btnPrincipal)
-                        .addGap(25, 25, 25))
-                    .addGroup(_panelFondoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(39, Short.MAX_VALUE))))
+                        .addGap(45, 45, 45)
+                        .addComponent(_btnPrincipal)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(_panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(_panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

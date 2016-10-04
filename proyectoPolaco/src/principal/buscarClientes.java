@@ -40,6 +40,7 @@ public class buscarClientes extends javax.swing.JFrame {
         _txtIdCliente1 = new javax.swing.JTextField();
         _radID = new javax.swing.JRadioButton();
         _radNombre = new javax.swing.JRadioButton();
+        _btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +62,8 @@ public class buscarClientes extends javax.swing.JFrame {
 
         _radNombre.setText("Nombre");
 
+        _btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout _panelFondoLayout = new javax.swing.GroupLayout(_panelFondo);
         _panelFondo.setLayout(_panelFondoLayout);
         _panelFondoLayout.setHorizontalGroup(
@@ -80,8 +83,9 @@ public class buscarClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(_radID)
-                    .addComponent(_radNombre))
-                .addGap(20, 20, 20))
+                    .addComponent(_radNombre)
+                    .addComponent(_btnBuscar))
+                .addContainerGap())
         );
         _panelFondoLayout.setVerticalGroup(
             _panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +105,9 @@ public class buscarClientes extends javax.swing.JFrame {
                     .addComponent(_txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_radNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(_btnBuscar))
                 .addContainerGap())
         );
 
@@ -173,6 +179,7 @@ public class buscarClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton _btnBuscar;
     private javax.swing.JLabel _lblClienteId;
     private javax.swing.JList<String> _listClientes;
     private javax.swing.JPanel _panelFondo;
