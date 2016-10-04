@@ -28,15 +28,25 @@ public class ventanaMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        _lblTitulo = new javax.swing.JLabel();
+        _panelFondo2 = new javax.swing.JPanel();
         _btnHistorial = new javax.swing.JButton();
         _btnConsCliente = new javax.swing.JButton();
         _btnInformacion = new javax.swing.JButton();
         _btnNuevoCli = new javax.swing.JButton();
-        _lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        _lblTitulo.setText("Comercial ebenezer,                        programa polaco");
+
+        _panelFondo2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         _btnHistorial.setText("Historial");
+        _btnHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _btnHistorialMouseClicked(evt);
+            }
+        });
 
         _btnConsCliente.setText("Consulta de cliente");
 
@@ -49,57 +59,87 @@ public class ventanaMain extends javax.swing.JFrame {
 
         _btnNuevoCli.setText("Agregar cliente nuevo");
 
-        _lblTitulo.setText("Comercial ebenezer,                        programa polaco");
+        javax.swing.GroupLayout _panelFondo2Layout = new javax.swing.GroupLayout(_panelFondo2);
+        _panelFondo2.setLayout(_panelFondo2Layout);
+        _panelFondo2Layout.setHorizontalGroup(
+            _panelFondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelFondo2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(_panelFondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(_btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(_btnConsCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(_btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(_btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        _panelFondo2Layout.setVerticalGroup(
+            _panelFondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelFondo2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(_btnHistorial)
+                .addGap(27, 27, 27)
+                .addComponent(_btnConsCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(_btnInformacion)
+                .addGap(26, 26, 26)
+                .addComponent(_btnNuevoCli)
+                .addGap(40, 40, 40))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(_panelFondo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(_btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(_btnConsCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(_btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(_btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(_lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addComponent(_lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addComponent(_lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(_btnHistorial)
-                .addGap(26, 26, 26)
-                .addComponent(_btnConsCliente)
-                .addGap(32, 32, 32)
-                .addComponent(_btnInformacion)
-                .addGap(35, 35, 35)
-                .addComponent(_btnNuevoCli)
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addComponent(_panelFondo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void _btnInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnInformacionMouseClicked
-       actualizar act = new actualizar();
+       
+       buscarClientes act = new buscarClientes();
        act.setVisible(true);
+       act.setTipo(1);
        this.dispose();
     }//GEN-LAST:event__btnInformacionMouseClicked
+
+    private void _btnHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnHistorialMouseClicked
+       buscarClientes bCli = new buscarClientes();
+       bCli.setTipo(2);
+       bCli.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event__btnHistorialMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,6 +183,7 @@ public class ventanaMain extends javax.swing.JFrame {
     private javax.swing.JButton _btnInformacion;
     private javax.swing.JButton _btnNuevoCli;
     private javax.swing.JLabel _lblTitulo;
+    private javax.swing.JPanel _panelFondo2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

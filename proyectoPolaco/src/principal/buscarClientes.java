@@ -9,15 +9,14 @@ package principal;
  *
  * @author JoseR
  */
-public class actualizar extends javax.swing.JFrame {
-
+public class buscarClientes extends javax.swing.JFrame {
+    private int tipo = 0 ;
     /**
      * Creates new form actualizar
      */
-    public actualizar() {
+    public buscarClientes() {
         initComponents();
-    }
-
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,9 +114,18 @@ public class actualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void _listClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__listClientesMouseClicked
-        actualizarP2 vent2Pagos = new actualizarP2(); 
-        vent2Pagos.setNombre("Juan Perez");
-        vent2Pagos.setVisible(true);
+        if(tipo==1){
+            actualizarP2 vent2Pagos = new actualizarP2(); 
+            vent2Pagos.setNombre("Juan Perez");
+            vent2Pagos.setVisible(true);
+        }
+        if(tipo == 2){
+            
+        
+        
+        }
+        
+        
         this.dispose();
     }//GEN-LAST:event__listClientesMouseClicked
 
@@ -138,20 +146,21 @@ public class actualizar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new actualizar().setVisible(true);
+                new buscarClientes().setVisible(true);
             }
         });
     }
@@ -166,4 +175,12 @@ public class actualizar extends javax.swing.JFrame {
     private javax.swing.JTextField _txtNombreCliente;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
 }
