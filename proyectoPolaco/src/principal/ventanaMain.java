@@ -35,7 +35,7 @@ public class ventanaMain extends javax.swing.JFrame {
         _btnConsCliente = new javax.swing.JButton();
         _btnInformacion = new javax.swing.JButton();
         _btnNuevoCli = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        _editarProductos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +71,12 @@ public class ventanaMain extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Editar productos");
+        _editarProductos.setText("Editar productos");
+        _editarProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _editarProductosMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout _panelFondo2Layout = new javax.swing.GroupLayout(_panelFondo2);
         _panelFondo2.setLayout(_panelFondo2Layout);
@@ -84,7 +89,7 @@ public class ventanaMain extends javax.swing.JFrame {
                     .addComponent(_btnConsCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(_editarProductos))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         _panelFondo2Layout.setVerticalGroup(
@@ -99,7 +104,7 @@ public class ventanaMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(_btnNuevoCli)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(_editarProductos)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -170,6 +175,10 @@ public class ventanaMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event__btnNuevoCliMouseClicked
 
+    private void _editarProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__editarProductosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event__editarProductosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -211,9 +220,9 @@ public class ventanaMain extends javax.swing.JFrame {
     private javax.swing.JButton _btnHistorial;
     private javax.swing.JButton _btnInformacion;
     private javax.swing.JButton _btnNuevoCli;
+    private javax.swing.JButton _editarProductos;
     private javax.swing.JLabel _lblTitulo;
     private javax.swing.JPanel _panelFondo2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -92,7 +92,7 @@
                           <Component id="_btnConsCliente" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="_btnInformacion" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                           <Component id="_btnNuevoCli" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="_editarProductos" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
@@ -110,7 +110,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="_btnNuevoCli" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="_editarProductos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -149,10 +149,13 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="_btnNuevoCliMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="_editarProductos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="_editarProductosMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
