@@ -141,7 +141,9 @@ public class ventanaMain extends javax.swing.JFrame {
     }//GEN-LAST:event__btnInformacionMouseClicked
 
     private void _btnHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnHistorialMouseClicked
-  
+            historial ventHistorial = new historial();
+            ventHistorial.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event__btnHistorialMouseClicked
 
     private void _btnConsClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnConsClienteMouseClicked

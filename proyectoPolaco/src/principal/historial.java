@@ -39,6 +39,7 @@ public class historial extends javax.swing.JFrame {
         _lblDesdeFecha = new javax.swing.JLabel();
         _lblHastaFecha = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        _btnPrincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,12 +69,6 @@ public class historial extends javax.swing.JFrame {
             .addGroup(_panelFondoRefinarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(_panelFondoRefinarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(_panelFondoRefinarLayout.createSequentialGroup()
-                        .addGroup(_panelFondoRefinarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(_lblRefinar)
-                            .addComponent(_dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(_dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(32, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelFondoRefinarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1))
@@ -81,7 +76,15 @@ public class historial extends javax.swing.JFrame {
                         .addGroup(_panelFondoRefinarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(_lblDesdeFecha)
                             .addComponent(_lblHastaFecha))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(_panelFondoRefinarLayout.createSequentialGroup()
+                        .addGroup(_panelFondoRefinarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_dateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addGroup(_panelFondoRefinarLayout.createSequentialGroup()
+                                .addComponent(_lblRefinar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(_dateHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         _panelFondoRefinarLayout.setVerticalGroup(
             _panelFondoRefinarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +104,13 @@ public class historial extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        _btnPrincipal.setText("Principal");
+        _btnPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _btnPrincipalMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout _panelFondoLayout = new javax.swing.GroupLayout(_panelFondo);
         _panelFondo.setLayout(_panelFondoLayout);
         _panelFondoLayout.setHorizontalGroup(
@@ -109,7 +119,10 @@ public class historial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(_panelFondoRefinar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(_panelFondoRefinar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(_panelFondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(_btnPrincipal)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
@@ -120,11 +133,14 @@ public class historial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(_panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(_panelFondoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(_panelFondoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(50, 50, 50)
-                        .addComponent(_panelFondoRefinar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(_panelFondoRefinar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(_btnPrincipal))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,6 +156,12 @@ public class historial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void _btnPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnPrincipalMouseClicked
+        ventanaMain vMain = new ventanaMain();
+        vMain.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event__btnPrincipalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -177,6 +199,7 @@ public class historial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton _btnPrincipal;
     private com.toedter.calendar.JDateChooser _dateDesde;
     private com.toedter.calendar.JDateChooser _dateHasta;
     private javax.swing.JLabel _lblDesdeFecha;

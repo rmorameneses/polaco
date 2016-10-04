@@ -5,18 +5,23 @@
  */
 package principal;
 
+import javax.swing.ButtonGroup;
+
 /**
  *
  * @author JoseR
  */
 public class buscarClientes extends javax.swing.JFrame {
     private int tipo = 0 ;
+    ButtonGroup botonesGrupo = new ButtonGroup();
     /**
      * Creates new form actualizar
      */
     public buscarClientes() {
         initComponents();
         this.setResizable(false);
+        botonesGrupo.add(_radID);
+        botonesGrupo.add(_radNombre);
     } 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,8 +126,9 @@ public class buscarClientes extends javax.swing.JFrame {
             vent2Pagos.setVisible(true);
         }
         if(tipo == 2){
-            
-        
+            consultaCliente cCliente = new consultaCliente();
+            cCliente.setVisible(true);
+            this.dispose();
         
         }
         
