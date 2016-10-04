@@ -45,6 +45,11 @@ public class actualizar extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        _listClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _listClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(_listClientes);
 
         _radID.setText("ID");
@@ -108,6 +113,13 @@ public class actualizar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void _listClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__listClientesMouseClicked
+        actualizarP2 vent2Pagos = new actualizarP2(); 
+        vent2Pagos.setNombre("Juan Perez");
+        vent2Pagos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event__listClientesMouseClicked
 
     /**
      * @param args the command line arguments
