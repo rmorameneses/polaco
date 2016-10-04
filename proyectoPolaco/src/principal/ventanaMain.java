@@ -35,6 +35,7 @@ public class ventanaMain extends javax.swing.JFrame {
         _btnConsCliente = new javax.swing.JButton();
         _btnInformacion = new javax.swing.JButton();
         _btnNuevoCli = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,13 @@ public class ventanaMain extends javax.swing.JFrame {
         });
 
         _btnNuevoCli.setText("Agregar cliente nuevo");
+        _btnNuevoCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _btnNuevoCliMouseClicked(evt);
+            }
+        });
+
+        jButton1.setText("Editar productos");
 
         javax.swing.GroupLayout _panelFondo2Layout = new javax.swing.GroupLayout(_panelFondo2);
         _panelFondo2.setLayout(_panelFondo2Layout);
@@ -75,7 +83,8 @@ public class ventanaMain extends javax.swing.JFrame {
                     .addComponent(_btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_btnConsCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(_btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(_btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(_btnNuevoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         _panelFondo2Layout.setVerticalGroup(
@@ -83,13 +92,15 @@ public class ventanaMain extends javax.swing.JFrame {
             .addGroup(_panelFondo2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(_btnHistorial)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(_btnConsCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(_btnInformacion)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(_btnNuevoCli)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -110,8 +121,8 @@ public class ventanaMain extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(_lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(_panelFondo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(_panelFondo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,6 +163,12 @@ public class ventanaMain extends javax.swing.JFrame {
        bCli.setVisible(true);
        this.dispose();
     }//GEN-LAST:event__btnConsClienteMouseClicked
+
+    private void _btnNuevoCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnNuevoCliMouseClicked
+        agregarCliente aCliente = new agregarCliente();
+        aCliente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event__btnNuevoCliMouseClicked
 
     /**
      * @param args the command line arguments
@@ -196,6 +213,7 @@ public class ventanaMain extends javax.swing.JFrame {
     private javax.swing.JButton _btnNuevoCli;
     private javax.swing.JLabel _lblTitulo;
     private javax.swing.JPanel _panelFondo2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class consultaCliente extends javax.swing.JFrame {
      */
     public consultaCliente() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
