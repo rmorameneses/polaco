@@ -49,6 +49,11 @@ public class ventanaMain extends javax.swing.JFrame {
         });
 
         _btnConsCliente.setText("Consulta de cliente");
+        _btnConsCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _btnConsClienteMouseClicked(evt);
+            }
+        });
 
         _btnInformacion.setText("Actualizar informacion");
         _btnInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,11 +140,15 @@ public class ventanaMain extends javax.swing.JFrame {
     }//GEN-LAST:event__btnInformacionMouseClicked
 
     private void _btnHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnHistorialMouseClicked
+  
+    }//GEN-LAST:event__btnHistorialMouseClicked
+
+    private void _btnConsClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnConsClienteMouseClicked
        buscarClientes bCli = new buscarClientes();
        bCli.setTipo(2);
        bCli.setVisible(true);
        this.dispose();
-    }//GEN-LAST:event__btnHistorialMouseClicked
+    }//GEN-LAST:event__btnConsClienteMouseClicked
 
     /**
      * @param args the command line arguments
