@@ -1,14 +1,15 @@
-package Modelo;
+package Controlador;
 
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Conexion 
 {
     private Connection conexion;
-    static String bd="diagramaR";
+    static String bd="ExpresaT";
     static String user="root";
     static String password="root";
     Statement stmt = null;
