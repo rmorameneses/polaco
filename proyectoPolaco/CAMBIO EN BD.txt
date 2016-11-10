@@ -1,0 +1,2 @@
+alter table TELEFONO modify NUMERO INT;
+alter table cliente modify column direccion varchar(5000);
