@@ -7,7 +7,14 @@
 *.jar
 *.war
 *.ear
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/proyectoPolaco/build/
+/proyectoPolaco/dist/
 /proyectoPolaco/nbproject
+/proyectoPolaco/nbbuild/
+/proyectoPolaco/nbdist/
+/proyectoPolaco/.nb-gradle/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
