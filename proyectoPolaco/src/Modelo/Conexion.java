@@ -43,7 +43,7 @@ public final class Conexion
         
         try
         {
-            rs=stmt.executeQuery("select tarjeta.idcontrol,cliente.nombre,pagos.abono from pagos inner join tarjeta on (pagos.idtarjeta= tarjeta.idtarjeta) inner join cliente on (tarjeta.idcliente = cliente.idcliente) where (pagos.fecha = '"+fecha+"');");
+            rs=stmt.executeQuery("select pagos.fecha,pagos.idpagos,tarjeta.idcontrol,cliente.nombre,pagos.abono from pagos inner join tarjeta on (pagos.idtarjeta= tarjeta.idtarjeta) inner join cliente on (tarjeta.idcliente = cliente.idcliente) where (pagos.impreso is null) order by tarjeta.idcontrol;");
             
             while (rs.next()) {
                 Tarjeta tarjeta = new Tarjeta();
@@ -51,7 +51,47 @@ public final class Conexion
                 tarjeta.setPayments(new ArrayList<Payment>());
                 tarjeta.setCodigo(rs.getString("idcontrol"));
                 tarjeta.getClient().setName(rs.getString("nombre"));
-                tarjeta.getPayments().add(new Payment(rs.getString("abono")));
+                tarjeta.getPayments().add(new Payment(rs.getInt("abono"), rs.getInt("idpagos"), rs.getString("fecha")));
+                
+                listaPagos.add(tarjeta);
+            }
+            
+            // crea el reporte si hay mas de un pago que agregar
+            if (listaPagos.size() > 0) {
+                stmt.executeUpdate("insert into reporte values (null,'"+fecha+"');");
+            }
+            
+            // pone una marca en todos los reportes impresos y los asigna a los reportes
+            for (int index = 0; index < listaPagos.size(); index++) {
+                stmt.executeUpdate("update pagos set impreso= 'impreso' where pagos.idpagos = "+listaPagos.get(index).getPayments().get(0).getId()+";");
+                stmt.executeUpdate("update pagos set idReporte= (SELECT reporte.idreporte FROM proyectomonica.reporte where nombre = '"+fecha+"') where pagos.idpagos = "+listaPagos.get(index).getPayments().get(0).getId()+";");
+            }
+        }
+        catch(Exception ex)
+        {
+            Logger.getLogger(ventanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        cerrar(stmt);
+        return listaPagos;
+    }
+    
+    public static ArrayList<Tarjeta> getListaPagosReporte(String nombreReporte) {
+        preparardb();
+        ArrayList<Tarjeta> listaPagos = new ArrayList<>();
+        
+        try
+        {
+            rs=stmt.executeQuery("select pagos.idpagos,pagos.fecha,tarjeta.idcontrol,cliente.nombre,pagos.abono from pagos inner join reporte on (reporte.idreporte = pagos.idReporte) inner join tarjeta on (pagos.idtarjeta= tarjeta.idtarjeta) " +
+                "inner join cliente on (tarjeta.idcliente = cliente.idcliente) where (reporte.nombre = '"+nombreReporte.toUpperCase()+"') order by tarjeta.idcontrol;");
+            
+            while (rs.next()) {
+                Tarjeta tarjeta = new Tarjeta();
+                tarjeta.setClient(new Cliente());
+                tarjeta.setPayments(new ArrayList<Payment>());
+                tarjeta.setCodigo(rs.getString("idcontrol"));
+                tarjeta.getClient().setName(rs.getString("nombre"));
+                tarjeta.getPayments().add(new Payment(rs.getInt("abono"), rs.getInt("idpagos"), rs.getString("fecha")));
                 
                 listaPagos.add(tarjeta);
             }
@@ -127,6 +167,29 @@ public final class Conexion
         catch(Exception e){}
         }
     }
+    
+    public static ArrayList<String> getReportes() {
+        preparardb();
+        ArrayList<String> lista = new ArrayList<>();
+        
+        try
+        {
+            rs=stmt.executeQuery("select * from reporte order by idreporte desc;");
+            
+            while(rs.next())
+            {
+                lista.add(rs.getString("nombre"));
+            } 
+        }
+        catch(Exception ex)
+        {
+            Logger.getLogger(ventanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        cerrar(stmt);
+        
+        return lista;
+    }
 
     public static void registrarTarjeta(Tarjeta tarjeta)
     {
@@ -134,12 +197,13 @@ public final class Conexion
         
         try
         {
-            stmt.executeQuery("call insertarCliente('"+tarjeta.getClient().getName()+"','"+tarjeta.getClient().getLocation()+"','"+tarjeta.getClient().getMail()+"');");
-            stmt.executeQuery("call insertarTelefono('"+tarjeta.getClient().getPhone()+"','"+tarjeta.getClient().getName()+"');");
-            stmt.executeQuery("call insertarTarjeta('"+tarjeta.getClient().getName()+"','"+tarjeta.getDiaPago()+"','"+tarjeta.getPeriodicity()+"','"+tarjeta.getCodigo()+"','"+tarjeta.getProducts()+"',"+tarjeta.getSaldoTotal()+");");
+            stmt.executeQuery("call insertarCliente('"+tarjeta.getClient().getName().toUpperCase()+"','"+tarjeta.getClient().getLocation().toUpperCase()+"','"+tarjeta.getClient().getMail().toUpperCase()+"');");
+            stmt.executeQuery("call insertarTelefono("+(tarjeta.getClient().getPhone().equals("")?0:tarjeta.getClient().getPhone())+",'"+tarjeta.getClient().getName().toUpperCase()+"');");
+            
+            stmt.executeQuery("call insertarTarjeta('"+tarjeta.getClient().getName().toUpperCase()+"','"+tarjeta.getDiaPago().toUpperCase()+"','"+tarjeta.getPeriodicity().toUpperCase()+"','"+tarjeta.getCodigo()+"','"+tarjeta.getProducts().toUpperCase()+"',"+tarjeta.getSaldoTotal()+",'"+tarjeta.getFechaInicial()+"',"+tarjeta.getCuotaPeriodica()+");");
             
             for (int index = 0; index < tarjeta.getPayments().size(); index++) {
-                stmt.executeQuery("call insertarPago('"+tarjeta.getPayments().get(index).getDate()+"',"+tarjeta.getPayments().get(index).getAmount()+",'"+tarjeta.getCodigo()+"');");
+                stmt.executeQuery("call insertarPago('"+tarjeta.getPayments().get(index).getDate()+"',"+tarjeta.getPayments().get(index).getAmount()+",'"+tarjeta.getCodigo()+"','"+tarjeta.getPayments().get(index).getNota().toUpperCase()+"');");
             }
         }
         catch(Exception ex)
@@ -153,16 +217,14 @@ public final class Conexion
     public static void agregarAbono(String abono, String codigoTarjetaAbonar, String date) {
         preparardb();
         
-        try
-        {
+        try {
             System.out.println("date: "+ date);
             System.out.println("abono: "+ abono);
             System.out.println("codigoTarjetaAbonar: "+ codigoTarjetaAbonar);
-            stmt.executeQuery("call insertarPago('"+date+"',"+abono+",'"+codigoTarjetaAbonar+"');");
+            stmt.executeQuery("call insertarPago('"+date+"',"+abono+",'"+codigoTarjetaAbonar+"','');");
             JOptionPane.showMessageDialog(null, "Abono insertado correctamente");
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error a la hora de insertar pago");
         }
         
@@ -191,21 +253,24 @@ public final class Conexion
     }
     
     public static ArrayList<Tarjeta> consultarTarjetaCliente(String criterioBusqueda) {
+        criterioBusqueda = criterioBusqueda.toUpperCase();
         preparardb();
         ArrayList<Tarjeta> lista= new ArrayList();
         
         try
         {
-            if (ControladorAgregarTarjeta.isNumeric(criterioBusqueda)) {
-                rs=stmt.executeQuery("select c.nombre,t.idcontrol, t.fecha from cliente c inner join tarjeta t on (c.idcliente = t.idcliente) where (t.idcontrol = '"+criterioBusqueda+"');");
+            if (ControladorAgregarTarjeta.isValidCode(criterioBusqueda)) {
+                System.out.println("1");
+                rs=stmt.executeQuery("select c.nombre,t.idcontrol, t.fecha, t.cuotaperiodica from cliente c inner join tarjeta t on (c.idcliente = t.idcliente) where (t.idcontrol = '"+criterioBusqueda+"');");
             }
             else {
-                rs=stmt.executeQuery("select c.nombre,t.idcontrol from cliente c inner join tarjeta t on (c.idcliente = t.idcliente) where (c.nombre = '"+criterioBusqueda+"');");
+                rs=stmt.executeQuery("select c.nombre,t.idcontrol, t.cuotaperiodica from cliente c inner join tarjeta t on (c.idcliente = t.idcliente) where (c.nombre like '%"+criterioBusqueda.toUpperCase()+"%');");
             }
             
             while(rs.next())
             {
-                lista.add( new Tarjeta("", new Cliente(rs.getString("nombre"),"","",""), "",rs.getString("idcontrol"),""));
+                lista.add( new Tarjeta("", new Cliente(rs.getString("nombre"),"","",""), "",rs.getString("idcontrol"),"",0,"",0));
+                lista.get(lista.size()-1).setCuotaPeriodica(rs.getInt("cuotaperiodica"));
             } 
         }
         catch(Exception ex)

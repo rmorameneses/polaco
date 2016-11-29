@@ -4,19 +4,28 @@ import java.sql.Date;
 
 public class Payment {
     private String date;
-    private String amount;
-    private String paymentKind; 
+    private int amount;
     private String nota;
+    private int id;
 
-    public Payment(String date, String amount, String paymentKind, String nota) {
+    public Payment(String date, int amount, String nota) {
         this.date = date;
         this.amount = amount;
-        this.paymentKind = paymentKind;
         this.nota = nota;
     }
+    
+    public int getId() {
+        return id;
+    }
 
-    Payment(String abono) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    Payment(int abono, int id, String fecha) {
         this.amount = abono;
+        this.id= id;
+        this.date = fecha;
     }
 
     public String getNota() {
@@ -35,19 +44,11 @@ public class Payment {
         this.date = date;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public String getPaymentKind() {
-        return paymentKind;
-    }
-
-    public void setPaymentKind(String paymentKind) {
-        this.paymentKind = paymentKind;
     }
 }

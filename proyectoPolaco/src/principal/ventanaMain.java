@@ -4,6 +4,7 @@ import Controlador.ControladorAgregarTarjeta;
 import Modelo.Conexion;
 import Modelo.Tarjeta;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException; 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +35,7 @@ public class ventanaMain extends javax.swing.JFrame {
     DefaultListModel listaNombres;
     DefaultListModel listaCodigos;
     String codigoTarjetaAbonar;
+    DecimalFormat formateadorDinero = new DecimalFormat("###,###.##");
 
     public ventanaMain() {
         initComponents();
@@ -54,6 +57,7 @@ public class ventanaMain extends javax.swing.JFrame {
         _btnNuevoCli = new javax.swing.JButton();
         jTextField9 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
+        _btnHistorial1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         _btnAgregarCliente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -111,7 +115,7 @@ public class ventanaMain extends javax.swing.JFrame {
             }
         });
         _panelFondo2.add(_btnHistorial);
-        _btnHistorial.setBounds(20, 272, 240, 74);
+        _btnHistorial.setBounds(20, 270, 240, 50);
 
         _btnConsCliente.setBackground(new java.awt.Color(102, 102, 102));
         _btnConsCliente.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -159,12 +163,47 @@ public class ventanaMain extends javax.swing.JFrame {
                 _btnNuevoCliMouseClicked(evt);
             }
         });
+        _btnNuevoCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnNuevoCliActionPerformed(evt);
+            }
+        });
         _panelFondo2.add(_btnNuevoCli);
         _btnNuevoCli.setBounds(20, 31, 240, 73);
+
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
+            }
+        });
         _panelFondo2.add(jTextField9);
         jTextField9.setBounds(20, 150, 240, 30);
+
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField11KeyReleased(evt);
+            }
+        });
         _panelFondo2.add(jTextField11);
         jTextField11.setBounds(20, 230, 240, 30);
+
+        _btnHistorial1.setBackground(new java.awt.Color(102, 102, 102));
+        _btnHistorial1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        _btnHistorial1.setForeground(new java.awt.Color(0, 255, 255));
+        _btnHistorial1.setText("Recuperar reporte");
+        _btnHistorial1.setOpaque(false);
+        _btnHistorial1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _btnHistorial1MouseClicked(evt);
+            }
+        });
+        _btnHistorial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnHistorial1ActionPerformed(evt);
+            }
+        });
+        _panelFondo2.add(_btnHistorial1);
+        _btnHistorial1.setBounds(20, 320, 240, 30);
 
         getContentPane().add(_panelFondo2);
         _panelFondo2.setBounds(94, 70, 280, 359);
@@ -209,6 +248,11 @@ public class ventanaMain extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
         jPanel2.add(jTextField1);
@@ -341,67 +385,137 @@ public class ventanaMain extends javax.swing.JFrame {
         ArrayList<Tarjeta> abonos;
         
         try {
-            
+            // se pone primero esto para que lance el error y no haga la actualizacion en la BD en caso de que tenga el doc abierto
+            File archivo= new File(ControladorAgregarTarjeta.DIRECCION_ARCHIVO_WORD);
+            FileOutputStream out = new FileOutputStream(archivo);
             Calendar c2 = new GregorianCalendar();
             jDateChooser1.setCalendar(c2);
             String fecha = jDateChooser1.getDate().getDate()+"/"+(jDateChooser1.getDate().getMonth()+1)+"/"+(jDateChooser1.getDate().getYear()+1900);
-            //String fecha = "10/12/2017";
-            abonos = Conexion.getListaPagos(fecha);
+            String fechaCreacion = "Reporte del :"+fecha+", hora: " + new Date().getHours()+" : "+ new Date().getMinutes()+" : "+ new Date().getSeconds();
+            abonos = Conexion.getListaPagos(fechaCreacion);
+            
             if (abonos.size()>0) {
                 XWPFDocument document= new XWPFDocument();
                 int total=0;
-
-                //Write the Document in file system
-                FileOutputStream out = new FileOutputStream(
-                //new File("C:\\Users\\Luis Barboza\\Desktop\\EBENEZER.docx"));  
-                new File("C:\\Users\\ADMIN\\EBENEZER.docx"));
-                        
                 //create table
                 XWPFTable table = document.createTable();
-                //create first row
-                XWPFTableRow tableRowOne = table.getRow(0);
-                tableRowOne.getCell(0).setText("Codigo");
-                tableRowOne.addNewTableCell().setText("Fecha");
-                tableRowOne.addNewTableCell().setText("Nombre");
-                tableRowOne.addNewTableCell().setText("Abono");
-
-                for (int index = 0;index < abonos.size(); index ++) {
-                    XWPFTableRow row = table.createRow();
-                    System.out.println("codigo: "+abonos.get(index).getCodigo());
-                    row.getCell(0).setText(abonos.get(index).getCodigo());
-                    row.getCell(1).setText(fecha);
-                    row.getCell(2).setText(abonos.get(index).getClient().getName());
-                    row.getCell(3).setText(abonos.get(index).getPayments().get(0).getAmount());
-                }
                 
-                for (int index = 0;index < abonos.size(); index ++) {
-                    total +=Integer.parseInt(abonos.get(index).getPayments().get(0).getAmount());
-                }
+                // pone la fecha
+                XWPFTableRow tableRowOne = table.getRow(0);
+                tableRowOne.getCell(0).setText("Fecha del reporte");
+                tableRowOne.addNewTableCell().setText("");
+                tableRowOne.addNewTableCell().setText("");
+                tableRowOne.addNewTableCell().setText(fechaCreacion);
                 
                 XWPFTableRow row = table.createRow();
+                row.getCell(0).setText("-----------Código------------ ");
+                row.getCell(1).setText("-----------Fecha------------");
+                row.getCell(2).setText("-----------Nombre------------");
+                row.getCell(3).setText("-----------Abono------------");
+                int acumulador = 0;
+                
+                for (int index = 0;index < abonos.size(); index ++) {                    
+                    row = table.createRow();
+                    row.getCell(0).setText(abonos.get(index).getCodigo());
+                    row.getCell(1).setText(abonos.get(index).getPayments().get(0).getDate());
+                    row.getCell(2).setText(abonos.get(index).getClient().getName());
+                    row.getCell(3).setText(String.valueOf(formateadorDinero.format(abonos.get(index).getPayments().get(0).getAmount())));
+                    
+                    acumulador +=abonos.get(index).getPayments().get(0).getAmount();
+                }
+                
+                row = table.createRow();
                 row.getCell(0).setText("TOTAL: ");
                 row.getCell(1).setText("");
                 row.getCell(2).setText("");
-                row.getCell(3).setText(""+ total);
+                row.getCell(3).setText(""+ formateadorDinero.format(acumulador));
                 
                 document.write(out);
                 out.close();
 
                 JOptionPane.showMessageDialog(this, "Documento creado correctamente");
+                
+                try {
+                    Desktop.getDesktop().print(archivo);
+                    JOptionPane.showMessageDialog(this, "El comando para imprimir ha sido enviado");
+                }
+                catch (IOException ioex) {
+                    JOptionPane.showMessageDialog(this, "No se pudo imprimir");
+                }
             }
             else {
-                JOptionPane.showMessageDialog(this, "No hay abonos registrados hoy");
+                JOptionPane.showMessageDialog(this, "No hay abonos para imprimir, ya todos están impresos \n para repetir un reporte, presione el botón de Recuperar reporte");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Cierre el documento");
+            JOptionPane.showMessageDialog(this, "Cierre el documento, ya que está siendo usado por otro programa");
         }
     }//GEN-LAST:event__btnHistorialActionPerformed
+
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
+        try {
+            if (!jTextField9.getText().trim().equals("")) {
+                jTextField9.setText(jTextField9.getText().replace(" ", ""));
+                
+                if (jTextField9.getText().length() > 2)
+                    jTextField9.setText(jTextField9.getText().substring(0, 2)+" "+jTextField9.getText().substring(2, jTextField9.getText().length()));
+            }
+            //System.out.println(formateador.format(Integer.parseInt(jTextField7.getText())));
+        }
+        catch(Exception ex) {
+//            Logger.getLogger(ventanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTextField9KeyReleased
+
+    private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
+        if (ControladorAgregarTarjeta.isNumeric(jTextField11.getText())) {
+            try {
+                if (!jTextField11.getText().trim().equals("")) {
+                    jTextField11.setText(jTextField11.getText().replace(" ", ""));
+
+                    if (jTextField11.getText().length() > 2)
+                        jTextField11.setText(jTextField11.getText().substring(0, 2)+" "+jTextField11.getText().substring(2, jTextField11.getText().length()));
+                }
+                //System.out.println(formateador.format(Integer.parseInt(jTextField7.getText())));
+            }
+            catch(Exception ex) {
+    //            Logger.getLogger(ventanaMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jTextField11KeyReleased
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        try {
+            if (!jTextField1.getText().trim().equals("")) {
+                jTextField1.setText(formateadorDinero.format(Integer.parseInt(jTextField1.getText().replace(",", ""))));
+            }
+            
+            //System.out.println(formateador.format(Integer.parseInt(jTextField7.getText())));
+        }
+        catch(Exception ex) {
+//            Logger.getLogger(ventanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void _btnHistorial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__btnHistorial1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event__btnHistorial1MouseClicked
+
+    private void _btnHistorial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnHistorial1ActionPerformed
+        RecuperarReporte recuperarReporte = new RecuperarReporte();
+        recuperarReporte.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event__btnHistorial1ActionPerformed
+
+    private void _btnNuevoCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnNuevoCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__btnNuevoCliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton _btnAgregarCliente;
     private javax.swing.JButton _btnConsCliente;
     private javax.swing.JButton _btnHistorial;
+    private javax.swing.JButton _btnHistorial1;
     private javax.swing.JButton _btnInformacion;
     private javax.swing.JButton _btnNuevoCli;
     private javax.swing.JLabel _lblTitulo;
@@ -440,11 +554,15 @@ public class ventanaMain extends javax.swing.JFrame {
                 if (jTextField1.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(jPanel1, "No se ha digitado ningun monto");
                 }
-                else if (!ControladorAgregarTarjeta.isNumeric(jTextField1.getText())) {
+                else if (!ControladorAgregarTarjeta.isNumeric(jTextField1.getText().replace(",", ""))) {
                     JOptionPane.showMessageDialog(jPanel1, "No se ha digitado un dígito válido");
                 }
                 else {
-                    jLabel4.setText("¢ " + (Integer.parseInt(jLabel8.getText()) - Integer.parseInt(jTextField1.getText())));
+                    if (Integer.parseInt(jLabel8.getText().replace(",", "")) - Integer.parseInt(jTextField1.getText().replace(",", "")) < 0) {
+                        JOptionPane.showMessageDialog(null, "El abono es mayor al saldo restante de la tarjeta, puede proseguir pero quedará un monto negativo");
+                    }                    
+                    
+                    jLabel4.setText("¢ " + formateadorDinero.format((Integer.parseInt(jLabel8.getText().replace(",", "")) - Integer.parseInt(jTextField1.getText().replace(",", ""))))  );
                     _btnAgregarCliente.requestFocus();
                 }
             }
@@ -476,11 +594,12 @@ public class ventanaMain extends javax.swing.JFrame {
     }
 
     private void hacerAbono() {
-        Conexion.agregarAbono(jTextField1.getText(), codigoTarjetaAbonar, jDateChooser1.getDate().getDate()+"/"+(jDateChooser1.getDate().getMonth()+1)+"/"+(jDateChooser1.getDate().getYear()+1900));
+        Conexion.agregarAbono(jTextField1.getText().replace(",", ""), codigoTarjetaAbonar, jDateChooser1.getDate().getDate()+"/"+(jDateChooser1.getDate().getMonth()+1)+"/"+(jDateChooser1.getDate().getYear()+1900));
         jTextField9.setText("");
         jTextField9.requestFocus();
         jLabel8.setText("");
         jLabel4.setText("");
+        jLabel11.setText("");
         jTextField1.setText("");
     }
 
@@ -496,9 +615,11 @@ public class ventanaMain extends javax.swing.JFrame {
     }
 
     private void consultarCodigoTarjeta(String criterioBusqueda) {
-        if (!jTextField11.getText().trim().equals("")) {
-            jList1.removeAll();
-            jList2.removeAll();
+        if (!jTextField11.getText().trim().equals("") && ControladorAgregarTarjeta.esAlfaNumerica(criterioBusqueda)) {
+            listaNombres = new DefaultListModel();
+            listaCodigos = new DefaultListModel();
+            jList1.setModel(listaNombres);
+            jList2.setModel(listaCodigos);
             jPanel1.setVisible(false);
             jPanel3.setVisible(true);
             jTextField11.setText("");
@@ -508,7 +629,7 @@ public class ventanaMain extends javax.swing.JFrame {
             if (tarjeta.size()>0)
                 for (int index = 0; index < tarjeta.size(); index++) {
                     listaNombres.addElement(tarjeta.get(index).getClient().getName());
-                    listaCodigos.addElement(tarjeta.get(index).getCodigo());
+                    listaCodigos.addElement( tarjeta.get(index).getCodigo().substring(0, 2)+" "+tarjeta.get(index).getCodigo().substring(2, tarjeta.get(index).getCodigo().length())                  );
                 }
             else
                 JOptionPane.showMessageDialog(this, "No hay resultados para mostrar");
@@ -518,26 +639,33 @@ public class ventanaMain extends javax.swing.JFrame {
     }
 
     private void abonarCodigoTarjeta(String criterioBusqueda) {
-        if (!jTextField9.getText().trim().equals("")) {
+        if (!jTextField9.getText().trim().equals("") && ControladorAgregarTarjeta.esAlfaNumerica(criterioBusqueda)) {
             ArrayList<Tarjeta> tarjeta = (Conexion.consultarTarjetaCliente(criterioBusqueda));
-            Calendar c2 = new GregorianCalendar();
-            String saldoRestante=Conexion.getSaldoTarjeta(criterioBusqueda)+ "";
+            Calendar c2 = new GregorianCalendar();  
+            String saldoRestante= "";
             
-            jPanel1.setVisible(true);
-            jPanel3.setVisible(false);
-            jTextField1.requestFocus();
-            
-            jDateChooser1.setCalendar(c2);
-            jLabel11.setText(tarjeta.get(0).getClient().getName());
-            jLabel8.setText(saldoRestante);
-            
-            if (tarjeta.size()>0)
-                for (int index = 0; index < tarjeta.size(); index++) {
-                    listaNombres.addElement(tarjeta.get(index).getClient().getName());
-                    listaCodigos.addElement(tarjeta.get(index).getCodigo());
-                }
-            else
-                JOptionPane.showMessageDialog(this, "No se encontraron conincidencias para mostrar");
+            if (!tarjeta.isEmpty()) {
+                saldoRestante=Conexion.getSaldoTarjeta(criterioBusqueda)+ "";
+                jPanel1.setVisible(true);
+                jPanel3.setVisible(false);
+                jTextField1.requestFocus();
+
+                jDateChooser1.setCalendar(c2);
+                jLabel11.setText(tarjeta.get(0).getClient().getName());
+                jTextField1.setText(String.valueOf(formateadorDinero.format(tarjeta.get(0).getCuotaPeriodica())));
+                jLabel8.setText(formateadorDinero.format(Integer.parseInt(saldoRestante)));
+
+                if (tarjeta.size()>0)
+                    for (int index = 0; index < tarjeta.size(); index++) {
+                        listaNombres.addElement(tarjeta.get(index).getClient().getName());
+                        listaCodigos.addElement(tarjeta.get(index).getCodigo());
+                    }
+                else
+                    JOptionPane.showMessageDialog(this, "No se encontraron conincidencias para mostrar");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "No se encontraron tarjetas con el código: " + criterioBusqueda);
+            }
         }    
         else
             JOptionPane.showMessageDialog(this, "Debe introducir un criterio de búsqueda");
